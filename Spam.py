@@ -8,17 +8,19 @@ def beeM():
     for r in f:
         pyautogui.typewrite(r)
         pyautogui.press('enter')
-        time.sleep(1)
+        time.sleep(0.3)
     f.close()
 
 
 def ping():
-    time.sleep(5)
     who = input('who to ping?')
     num = int(input('how many times?'))
+    time.sleep(5)
     for i in range(num):
-        pyautogui.typewrite('@', who)
+        pyautogui.typewrite('@')
+        pyautogui.typewrite(who)
         pyautogui.press('enter')
+        time.sleep(0.3)
 
 
 def tragedy():
@@ -26,7 +28,7 @@ def tragedy():
     for c in f:
         pyautogui.typewrite(c)
         pyautogui.press('enter')
-        time.sleep(1)
+        time.sleep(0.3)
     f.close()
 
 
