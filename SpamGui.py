@@ -39,10 +39,9 @@ class spammer():
                     pyautogui.typewrite(message)
                     pyautogui.press('enter')
             time.sleep(0.5)
-        self.root.destroy()
-        quit()
 
     def tragedy(self):
+        time.sleep(5)
         num = int(self.num.get())
         for i in range(num):
             c = open('tragedy.txt', 'r')
@@ -54,13 +53,16 @@ class spammer():
     def SpamMessage(self):
         message = self.message.get()
         num = int(self.num.get())
-        time.sleep(3)
+        delay = self.delay.get()
+        if delay == '':
+            delay = 0.5
+        else:
+            delay = float(delay)
+        time.sleep(5)
         for i in range(num):
             pyautogui.typewrite(message)
             pyautogui.press('enter')
-            time.sleep(0.5)
-        self.root.destroy()
-        quit()
+            time.sleep(delay)
 
     def bee(self):
         time.sleep(5)
@@ -89,6 +91,7 @@ class spammer():
         self.num = tk.Entry(self.root)
 
         EB = tk.Button(self.root, text='enter', command=self.ping)
+        RB = tk.Button(self.root, text='return', command=self.menu)
 
         Wlable.grid(row=0)
         self.Who.grid(row=0, column=1)
@@ -97,6 +100,7 @@ class spammer():
         Nlable.grid(row=2)
         self.num.grid(row=2, column=1)
         EB.grid(row=3)
+        RB.grid(row=3, column=1)
 
         self.root.mainloop()
 
@@ -107,10 +111,12 @@ class spammer():
         nlable = tk.Label(self.root, text='how many times?')
         self.num = tk.Entry(self.root)
         EB = tk.Button(self.root, text='enter', command=self.tragedy)
+        RB = tk.Button(self.root, text='return', command=self.menu)
 
         nlable.grid(row=0)
         self.num.grid(row=0, column=1)
         EB.grid(row=1)
+        RB.grid(row=1, column=1)
 
         self.root.mainloop()
 
@@ -124,7 +130,11 @@ class spammer():
         Nlable = tk.Label(self.root, text='how many times')
         self.num = tk.Entry(self.root)
 
+        Dlable = tk.Label(self.root, text='what delay')
+        self.delay = tk.Entry(self.root)
+
         EB = tk.Button(self.root, text='enter', command=self.SpamMessage)
+        RB = tk.Button(self.root, text='return', command=self.menu)
 
         Mlable.grid(row=0)
         self.message.grid(row=0, column=1)
@@ -132,19 +142,25 @@ class spammer():
         Nlable.grid(row=1)
         self.num.grid(row=1, column=1)
 
-        EB.grid(row=2)
+        Dlable.grid(row=2)
+        self.delay.grid(row=2, column=1)
+
+        EB.grid(row=3, column=0)
+        RB.grid(row=3, column=1)
         self.root.mainloop()
 
     def menu(self):
+        self.root.destroy()
+        self.root = tk.Tk()
         PingB = tk.Button(self.root, text='ping', command=self.Mping)
         tragedyB = tk.Button(self.root, text='tragedy', command=self.Mtragedy)
         messageB = tk.Button(self.root, text='message', command=self.Mmessage)
         beeB = tk.Button(self.root, text='bee', command=self.bee)
 
-        PingB.grid(row=0)
-        tragedyB.grid(row=1)
-        messageB.grid(row=0, column=1)
-        beeB.grid(row=1, column=1)
+        PingB.grid(row=0, sticky=tk.EW)
+        tragedyB.grid(row=1, sticky=tk.EW)
+        messageB.grid(row=0, column=1, sticky=tk.EW)
+        beeB.grid(row=1, column=1, sticky=tk.EW)
 
         self.root.mainloop()
 
