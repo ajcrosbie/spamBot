@@ -62,7 +62,10 @@ class spammer():
         for i in range(num):
             pyautogui.typewrite(message)
             pyautogui.press('enter')
-            time.sleep(delay)
+            if i == num-1:
+                pass
+            else:
+                time.sleep(delay)
 
     def bee(self):
         time.sleep(5)
