@@ -170,4 +170,3 @@ class spammer():
 
 if __name__ == "__main__":
     spam = spammer()
-    spam.menu()
