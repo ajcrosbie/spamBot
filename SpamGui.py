@@ -13,7 +13,8 @@ class spammer():
         message = self.mes.get()
         num = int(self.num.get())
         for i in range(num):
-            if who == 'everyone':
+            if who == 'everyone' or who == '':
+                who = 'everyone'
                 if message == '':
                     pyautogui.typewrite('@')
                     pyautogui.typewrite(who)
